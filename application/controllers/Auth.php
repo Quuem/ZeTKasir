@@ -9,8 +9,8 @@ class Auth extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Model_Auth');
-
-        if($this->session->userdata('UserID') != NULL ){
+        //
+        if ($this->session->userdata('UserID') != NULL) {
             redirect('Dashboard');
         }
     }
@@ -50,41 +50,42 @@ class Auth extends CI_Controller
                 redirect('Auth');
             }
         } else {
-         $this->Register();
+            $this->Register();
         }
     }
 
-    public function Login(){
+    public function Login()
+    {
         $this->form_validation->set_rules('Username', 'Username', 'trim|required|min_length[5]|max_length[12]');
         $this->form_validation->set_rules('Password', 'Password', 'trim|required|min_length[5]');
 
-        
+
         if ($this->form_validation->run() == TRUE) {
             $Username = $this->input->post('Username');
             $Password = $this->input->post('Password');
-            
+
             $User = $this->Model_Auth->GetUserByUsername($Username);
 
-            if($User){
-                if(password_verify($Password, $User->Password)){
+            if ($User) {
+                if (password_verify($Password, $User->Password)) {
                     $data = [
-                        'NamaUser'=> $User->NamaUser,
-                        'UserID'=> $User->UserID,
-                        'Username'=> $User->Username,
+                        'NamaUser' => $User->NamaUser,
+                        'UserID' => $User->UserID,
+                        'Username' => $User->Username,
                     ];
-                    
-          
-                    
-                    $this->session->set_userdata( $data );
-                        redirect('Dashboard');
-                    
-                    
-                    
-                }else{
+
+
+
+                    $this->session->set_userdata($data);
+                    redirect('Dashboard');
+
+
+
+                } else {
                     $this->session->set_flashdata('error', 'Password Salah');
                     redirect('Auth');
                 }
-            }else{
+            } else {
                 $this->session->set_flashdata('error', 'Akun Tidak Ditemukan Atau Username Salah');
                 redirect('Auth');
             }
@@ -92,9 +93,9 @@ class Auth extends CI_Controller
         } else {
             $this->index();
         }
-        
-        
-        
+
+
+
     }
 }
 
