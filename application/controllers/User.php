@@ -44,8 +44,8 @@ class User extends CI_Controller {
         if ($this->form_validation->run() == TRUE) {
             $Password = $this->input->post('Password');
             $data = [
-                'NamaUser' => $this->input->post('NamaUser'),
-                'Username' => $this->input->post('Username'),
+                'NamaUser' => htmlspecialchars($this->input->post('NamaUser')),
+                'Username' => htmlspecialchars($this->input->post('Username')),
                 'Password' => password_hash($Password, PASSWORD_DEFAULT),
             ];
 
@@ -81,8 +81,8 @@ class User extends CI_Controller {
         if ($this->form_validation->run() == TRUE) {
             $Password = $this->input->post('Password');
             $data = [
-                'NamaUser' => $this->input->post('NamaUser'),
-                'Username' => $Username,
+                'NamaUser' => htmlspecialchars($this->input->post('NamaUser')),
+                'Username' => htmlspecialchars($Username),
                 'Password' => password_hash($Password, PASSWORD_DEFAULT),
             ];
 
@@ -109,6 +109,19 @@ class User extends CI_Controller {
             $this->session->set_flashdata('error', 'Data User gagal Dihapus');
             redirect('User');
         }
+    }
+
+    public function GantiPasswordAdmin(){
+        $Username = 'admin';
+        $Password = '12345';
+
+        $data = [
+            'Password'=> password_hash($Password, PASSWORD_DEFAULT),
+        ];
+
+        $this->db->where('Username',$Username)->update('user', $data);
+        $this->session->set_flashdata('success', 'Password Admin Diganti');
+        redirect('User');
     }
 
 

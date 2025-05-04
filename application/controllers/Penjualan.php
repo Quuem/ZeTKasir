@@ -97,7 +97,7 @@ class Penjualan extends CI_Controller {
     public function CreateDetail($PenjualanID){
         $ProdukID = $this->input->post('ProdukID');
         $Produk = $this->Model_Penjualan->GetProdukByID($ProdukID);
-        $Jumlah = $this->input->post('Jumlah');
+        $Jumlah = htmlspecialchars($this->input->post('Jumlah'));
         $SubTotal = $Jumlah * $Produk->Harga;
 
         if($Jumlah > $Produk->Stok){
@@ -108,7 +108,7 @@ class Penjualan extends CI_Controller {
         $data = [
             'PenjualanID'=> $PenjualanID,
             'ProdukID' =>$ProdukID,
-            'JumlahProduk'=> $Jumlah,
+            'JumlahProduk'=> htmlspecialchars($Jumlah),
             'SubTotal'=> $SubTotal,
             
         ];
@@ -144,7 +144,7 @@ class Penjualan extends CI_Controller {
     public function Bayar($id){
         
         $TotalHarga = $this->input->post('TotalHarga');
-        $TotalBayar = $this->input->post('TotalPembayaran');
+        $TotalBayar = htmlspecialchars($this->input->post('TotalPembayaran'));
 
         $data=[
             'TotalHarga' => $TotalHarga,

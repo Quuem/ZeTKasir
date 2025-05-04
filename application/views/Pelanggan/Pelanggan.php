@@ -102,7 +102,7 @@
 												<label class="form-label">Alamat Pelanggan</label>
 												<input type="text" class="form-control" name="Alamat"
 													placeholder="Alamat Pelanggan" value="<?= set_value('Alamat') ?>">
-												<?= form_error('NamaPelanggan', '<small class="text-danger">', '</small>') ?>
+												<?= form_error('Alamat', '<small class="text-danger">', '</small>') ?>
 											</div>
 										</div>
 										<div class="col-lg-6">
@@ -213,7 +213,7 @@
 																	<input type="text" class="form-control" name="Alamat"
 																		placeholder="Alamat Pelanggan"
 																		value="<?= $Row->Alamat ?>">
-																	<?= form_error('NamaPelanggan', '<small class="text-danger">', '</small>') ?>
+																	<?= form_error('Alamat', '<small class="text-danger">', '</small>') ?>
 																</div>
 															</div>
 															<div class="col-lg-6">

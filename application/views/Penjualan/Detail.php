@@ -135,7 +135,7 @@
 				<div class="modal-dialog modal-md" role="document">
 					<div class="modal-content">
 						<div class="modal-header">
-							<h5 class="modal-title">Tambah Pelanggan</h5>
+							<h5 class="modal-title">Pembayaran</h5>
 							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 						</div>
 						<form action="<?= base_url('Penjualan/Bayar/' . $Penjualan->PenjualanID) ?>" method="post"
@@ -200,10 +200,10 @@
 											<?= $row->JumlahProduk ?>
 										</td>
 										<td class="text-secondary text-center">
-											<?= $row->Harga ?>
+											Rp. <?= number_format($row->Harga) ?>
 										</td>
 										<td class="text-secondary text-center">
-											Rp. <?= $row->SubTotal ?>
+											Rp. <?= number_format($row->SubTotal) ?>
 										</td>
 										<td class="text-center ">
 											<a href="<?= base_url('Penjualan/DeleteDetail/' . $row->DetailID) ?>"

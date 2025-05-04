@@ -89,7 +89,7 @@
            
                     <div class="mb-3">
                         <label class="form-label">Username</label>
-                        <input type="email" name="Username" class="form-control" placeholder="Enter Username" value="<?= set_value('Username') ?>" >
+                        <input type="email" name="Username"  class="form-control" placeholder="Enter Username" value="<?= set_value('Username') ?>" >
                         <?= form_error('Username', '<small class="text-danger">') ?>
                     </div>
                     <div class="mb-3">

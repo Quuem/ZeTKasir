@@ -175,12 +175,19 @@
 										<td class="text-secondary">
 											#
 										</td>
-										<td>
-											<a href="#" data-bs-target="#Modal<?= $Row->UserID ?>"
-												data-bs-toggle="modal">Edit</a>
-											<a href="<?= base_url('User/Delete/' . $Row->UserID) ?>" class="text-danger"
-												onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data User')">Hapus</a>
-										</td>
+
+										<?php if($Row->Username == 'admin') {?>
+											<td></td>
+											<?php } else{
+												?>
+												<td>
+													<a href="#" data-bs-target="#Modal<?= $Row->UserID ?>"
+														data-bs-toggle="modal">Edit</a>
+													<a href="<?= base_url('User/Delete/' . $Row->UserID) ?>" class="text-danger"
+														onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data User')">Hapus</a>
+												</td>
+											<?php } ?>
+
 									</tr>
 
 

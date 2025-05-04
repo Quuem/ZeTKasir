@@ -158,7 +158,7 @@
                         <div class="d-flex align-items-center">
                             <div class="subheader">Pendapatan</div>
                         </div>
-                        <div class="h1 mb-3"><?= $Pendapatan->TotalHarga ? $Pendapatan->TotalHarga : '0' ?></div>
+                        <div class="h1 mb-3">Rp. <?= number_format( $Pendapatan->TotalHarga ? $Pendapatan->TotalHarga : '0' )?></div>
                         <div class="d-flex mb-2">
                             <div class="ms-auto">
                                 <span class="text-green d-inline-flex align-items-center lh-1">
